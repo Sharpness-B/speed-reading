@@ -51,11 +51,12 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
+      {/* <img src={logo} className="App-logo" alt="logo" /> */}
+        <h1>Speed Reading</h1>
         <p>How fast can you successfully play all notes on first try?</p>
-        <Metronome />
+        <Metronome bpmTagStyle={{color: "#3B341F"}} />
         <div id="output"></div>
-        <button onClick={draw}>Ny</button>
+        <button onClick={draw}>New music</button>
       </header>
     </div>
   );
