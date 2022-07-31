@@ -56,7 +56,7 @@ function App() {
         <p>How fast can you successfully play all notes on first try?</p>
         <Metronome bpmTagStyle={{color: "#3B341F"}} />
         <div id="output"></div>
-        <button onClick={draw}>New music</button>
+        <button onClick={draw}>Generate New Music</button>
       </header>
     </div>
   );
