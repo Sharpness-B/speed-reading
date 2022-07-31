@@ -37,3 +37,13 @@ button {
   color: white;
   cursor: pointer;
 }
+
+#flip-hint {
+  font-weight: bold;
+  font-style: italic;
+}
+@media screen and (min-width: 550px) {
+  #flip-hint {
+    display: none;
+  }  
+}

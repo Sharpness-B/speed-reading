@@ -86,11 +86,11 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-      {/* <img src={logo} className="App-logo" alt="logo" /> */}
         <h1>Speed Reading</h1>
         <p>How fast can you successfully play all notes on first try?</p>
         <Metronome bpmTagStyle={{color: "#3B341F"}} />
         <div id="output"></div>
+        <p id="flip-hint">You might want to rotate your phone to the side to view all the notes.</p>
         <button onClick={draw}>Generate New Music</button>
       </header>
     </div>
