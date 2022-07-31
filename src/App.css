@@ -40,7 +40,8 @@
 button {
   font-size: calc(10px + 2vmin);
   /* margin-bottom: 1em; */
-  border-color: #100B00;
+  border: none;
+  border-radius: 3px;
   background-color: cornflowerblue;
   color: white;
   cursor: pointer;
