@@ -7,6 +7,41 @@ import { Vex } from "vexflow";
 
 const { Factory } = Vex.Flow;
 
+const scale = ["C", "D", "E", "F", "G", "A", "B"]
+
+const bottom = "E4"
+const top = "E6"
+
+// E2 -> 2
+const bottomOctave = parseInt( bottom.replace(/[A-Z]/g, "") )
+const topOctave    = parseInt( top   .replace(/[A-Z]/g, "") )
+
+// E2 -> 2
+const bottomNote = parseInt( bottom.replace(/[0-9]/g, "") )
+const topNote    = parseInt( top   .replace(/[0-9]/g, "") )
+
+
+const bag = []
+
+for (let i=bottomOctave; i<=topOctave; i++) {
+  for (let note of scale) {
+    // if outside of range
+    if ( !(    (scale.indexOf(bottomNote) > scale.indexOf(note)    && i===4) 
+            || (scale.indexOf(note)       > scale.indexOf(topNote) && i===6 )   ) ) {
+      bag.push(`${note}${i}`)
+    }
+  }
+}
+
+
+Array.prototype.getRandomSample = function() {
+  return this[Math.floor(Math.random()*this.length)];
+}
+
+function getRandom16thNotation() {
+  return `${bag.getRandomSample()}/16, ${bag.getRandomSample()}, ${bag.getRandomSample()}, ${bag.getRandomSample()}`
+}
+
 function App() {
   const draw = () => {
     // clear
@@ -14,7 +49,7 @@ function App() {
 
     // draw
     const vf = new Factory({
-      renderer: { elementId: 'output', width: 600, height: 150 },
+      renderer: { elementId: 'output', width: 600, height: 140 },
     });
 
     const score = vf.EasyScore();
@@ -25,14 +60,14 @@ function App() {
         voices: [
           score.voice(
             score.notes('')
-              .concat(score.beam(score.notes('A4/16, E4, C4, D4')))
-              .concat(score.beam(score.notes('A4/16, E4, C4, D4')))
-              .concat(score.beam(score.notes('A4/16, E4, C4, D4')))
-              .concat(score.beam(score.notes('A4/16, E4, C4, D4')))
-              .concat(score.beam(score.notes('A4/16, E4, C4, D4')))
-              .concat(score.beam(score.notes('A4/16, E4, C4, D4')))
-              .concat(score.beam(score.notes('A4/16, E4, C4, D4')))
-              .concat(score.beam(score.notes('A4/16, E4, C4, D4')))
+              .concat(score.beam(score.notes(getRandom16thNotation(), { stem: 'up' })))
+              .concat(score.beam(score.notes(getRandom16thNotation(), { stem: 'up' })))
+              .concat(score.beam(score.notes(getRandom16thNotation(), { stem: 'up' })))
+              .concat(score.beam(score.notes(getRandom16thNotation(), { stem: 'up' })))
+              .concat(score.beam(score.notes(getRandom16thNotation(), { stem: 'up' })))
+              .concat(score.beam(score.notes(getRandom16thNotation(), { stem: 'up' })))
+              .concat(score.beam(score.notes(getRandom16thNotation(), { stem: 'up' })))
+              .concat(score.beam(score.notes(getRandom16thNotation(), { stem: 'up' })))
             , { time: '8/4' })
         ],
       })
